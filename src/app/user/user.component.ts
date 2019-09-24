@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
+import { UserModel } from './../model/user.model';
 import { UserService } from './user.service';
 
 @Component({
@@ -9,10 +11,18 @@ import { UserService } from './user.service';
   providers: [UserService]
 })
 export class UserComponent implements OnInit {
+   users: Array<UserModel>;
 
-  constructor(private userService: UserService) { }
+   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.loadUser();
+  }
+
+  private loadUser(): void{
+  this.userService.getUsers().subscribe(res => {
+    this.users = res;
+  });
   }
 
 }
