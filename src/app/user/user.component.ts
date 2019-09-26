@@ -25,4 +25,13 @@ export class UserComponent implements OnInit {
   });
   }
 
+  public edit(user:UserModel):void{
+    sessionStorage.setItem('user', JSON.stringify(user));
+    this.router.navigate(['/createUserComponent'])
+  }
+
+  public delete(user:UserModel):void{
+        this.userService.delete(user);
+  }
+
 }

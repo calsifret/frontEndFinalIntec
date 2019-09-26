@@ -34,7 +34,7 @@ export class CreateUserService {
     return isValid;
   }
   public saveOrUpdate(user: UserModel): Observable<RestResponse> {
-    return this.http.post<RestResponse>("http://localhost:8080//saveOrUpdate", user);
+    return this.http.post<RestResponse>("http://localhost:8080//saveOrUpdate",JSON.stringify(user));
   }
   
 }
